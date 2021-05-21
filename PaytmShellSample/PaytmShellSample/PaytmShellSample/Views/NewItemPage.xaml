@@ -16,6 +16,8 @@
                 <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
+
+        <Button Text="Pay" Command="{Binding PayCommand}" HorizontalOptions="FillAndExpand" Margin="0,30"/>
         </StackLayout>
     </ContentPage.Content>
     

@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using AllInOneSDK;
+using PaytmShellSample.PaymentGateway;
 
 namespace PaytmShellSample.ViewModels
 {
@@ -17,6 +18,7 @@ namespace PaytmShellSample.ViewModels
 		{
 			SaveCommand = new Command(OnSave, ValidateSave);
 			CancelCommand = new Command(OnCancel);
+			PayCommand = new Command(OnPay);
 			this.PropertyChanged +=
 				(_, __) => SaveCommand.ChangeCanExecute();
 		}
@@ -41,11 +43,30 @@ namespace PaytmShellSample.ViewModels
 
 		public Command SaveCommand { get; }
 		public Command CancelCommand { get; }
-
+		public Command PayCommand { get; }
 		private async void OnCancel()
 		{
 			// This will pop the current page off the navigation stack
 			await Shell.Current.GoToAsync("..");
+		}
+
+		private async void OnPay()
+		{
+			string amount = "1.0";
+			string OrderId = "abc123";
+			var payTMTuple = PayTmPayment.GenerateTransactionToken(amount, "1111111111", OrderId, "WEBSTAGING", "Payment");
+
+			if (payTMTuple.Item1 == PaytmErrors.SUCCESS)
+			{
+				if (!payTMTuple.Item2.Equals(""))
+				{
+					//go ahead with the transaction
+
+					var TransactionId = payTMTuple.Item2; //storing the transcationId.
+
+					AllInOnePlugin.startTransaction(OrderId, "qFKjOk51773158003561", payTMTuple.Item2, amount, "https://securegw-stage.paytm.in/theia/paytmCallback?ORDER_ID=" + OrderId, true, true, this);
+				}
+			}
 		}
 
 		private async void OnSave()
