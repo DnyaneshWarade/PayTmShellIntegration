@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using AllInOneSDK;
 using Foundation;
 using UIKit;
 
@@ -26,6 +26,13 @@ namespace PaytmShellSample.iOS
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        [Export("application:openURL:sourceApplication:annotation:")]
+        public bool OpenUrl(UIApplication application, NSUrl url, string sourceApplication, NSObject annotation)
+        {
+            AllInOnePlugin.handleOpenUrl(url);
+            return true;
         }
     }
 }

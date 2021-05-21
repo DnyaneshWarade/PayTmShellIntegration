@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using AllInOneSDK;
 
 namespace PaytmShellSample.ViewModels
 {
-	public class NewItemViewModel : BaseViewModel
+	public class NewItemViewModel : BaseViewModel, PaymentCallback
 	{
 		private string text;
 		private string description;
@@ -60,6 +61,16 @@ namespace PaytmShellSample.ViewModels
 
 			// This will pop the current page off the navigation stack
 			await Shell.Current.GoToAsync("..");
+		}
+
+		public void success(Dictionary<string, object> dictionary)
+		{
+			AllInOnePlugin.DestroyInstance();
+		}
+
+		public void error(string errorMessage)
+		{
+			AllInOnePlugin.DestroyInstance();
 		}
 	}
 }
