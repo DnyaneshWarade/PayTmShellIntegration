@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -88,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaytmShellSample\PaytmShellSample.csproj">
-      <Project>{C89283AE-2EB1-4741-80DF-3D4054BA5C3A}</Project>
+      <Project>{92B0537B-1471-4346-ABD0-AD84EA98BEE4}</Project>
       <Name>PaytmShellSample</Name>
     </ProjectReference>
   </ItemGroup>
