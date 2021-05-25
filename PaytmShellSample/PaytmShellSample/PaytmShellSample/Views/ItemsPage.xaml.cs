@@ -28,5 +28,10 @@ namespace PaytmShellSample.Views
 			base.OnAppearing();
 			_viewModel.OnAppearing();
 		}
-	}
+
+        void ToolbarItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+			Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+        }
+    }
 }

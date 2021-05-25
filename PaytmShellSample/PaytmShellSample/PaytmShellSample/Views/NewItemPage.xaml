@@ -17,7 +17,8 @@
                 <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
 
-        <Button Text="Pay" Command="{Binding PayCommand}" HorizontalOptions="FillAndExpand" Margin="0,30"/>
+        <Button Text="Pay from ViewModel" Command="{Binding PayCommand}" HorizontalOptions="FillAndExpand" Margin="0,30"/>
+        <Button Text="Pay from ContentPage" Clicked="Button_Clicked" HorizontalOptions="FillAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
     

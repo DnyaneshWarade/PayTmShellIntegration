@@ -53,7 +53,8 @@ namespace PaytmShellSample.ViewModels
 		private async void OnPay()
 		{
 			string amount = "1.0";
-			string OrderId = "abc123";
+			Random _random = new Random();
+			string OrderId = _random.Next().ToString();
 			var payTMTuple = PayTmPayment.GenerateTransactionToken(amount, "1111111111", OrderId, "WEBSTAGING", "Payment");
 
 			if (payTMTuple.Item1 == PaytmErrors.SUCCESS)
